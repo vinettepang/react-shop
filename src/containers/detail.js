@@ -5,10 +5,10 @@ import React from 'react';
 export default class Detail extends React.Component{
     render(){
         const params=this.props.params;
+        console.log(this.props.match.params)
         return(
             <div>
-<h1>tes</h1>
-              <h1>test {params.id}</h1>
+                <h1>tes</h1>
             </div>
         );
     }

@@ -30,7 +30,7 @@ class App extends Component{
     let Routes = (
       <Switch>
         <Route path='/' exact component={Home}/>
-        <Route path='/detail' exact component={Detail}/>
+        <Route path='/detail/:params'  component={Detail}/>
       </Switch>
     );
     return (
