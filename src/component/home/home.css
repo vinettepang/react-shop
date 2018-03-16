@@ -1,0 +1,25 @@
+.space-carousel {
+  padding: 16px;
+  background: #DEF1E5;
+  overflow: hidden;
+}
+.my-carousel .v-item {
+  height: 36px;
+  line-height: 36px;
+  padding-left: 10px;
+}
+.sub-title {
+  color: #888;
+  font-size: 14px;
+  padding: 30px 0 18px 0;
+}
+.cat-list{
+	height: 50px;
+}
+.cat-list .cat-item{
+	width: 50px;
+	padding: 10px
+}
+a.list-item{
+	display: block;
+}
