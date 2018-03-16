@@ -24,16 +24,19 @@ const data = [
     img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
     title: 'Meet hotel',
     des: '不是所有的兼职汪都需要风吹日晒',
+    id:'1'
   },
   {
     img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
     title: 'McDonald\'s invites you',
     des: '不是所有的兼职汪都需要风吹日晒',
+    id:'2'
   },
   {
     img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
     title: 'Eat the week',
     des: '不是所有的兼职汪都需要风吹日晒',
+    id:'3'
   },
 ];
 const NUM_SECTIONS = 5;
@@ -84,7 +87,10 @@ export default class List extends React.Component{
   componentDidMount() {
     // you can scroll to the specified position
     // setTimeout(() => this.lv.scrollTo(0, 120), 800);
-
+    // let myFetchOptions = {method: 'GET'};
+    //     fetch('/api/homelist/上海/0',myFetchOptions)
+    //          .then(response => console.log(response))
+    //         .then(json => console.log(json));
     const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
     // simulate initial Ajax
     setTimeout(() => {
@@ -143,7 +149,10 @@ export default class List extends React.Component{
       const obj = data[index--];
       return (
         <div key={rowID} style={{ padding: '0 15px' }}>
-        <Link className='list-item' to={{ pathname: '/roster/7' }}>
+        <Link className='list-item' to={{
+        pathname: `detail/${obj.id}`,
+        state: 'hello',
+        }}>
           <div
             style={{
               lineHeight: '50px',

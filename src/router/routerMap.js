@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import Home from '../containers/home';
+import Detail from '../containers/detail';
 
 import {connect} from 'react-redux';
 
@@ -29,6 +30,7 @@ class App extends Component{
     let Routes = (
       <Switch>
         <Route path='/' exact component={Home}/>
+        <Route path='/detail' exact component={Detail}/>
       </Switch>
     );
     return (
