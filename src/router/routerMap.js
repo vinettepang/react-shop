@@ -1,13 +1,11 @@
 import React,{Component} from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 
 import Home from '../containers/home';
 import Detail from '../containers/detail';
-
+import Buy from '../containers/buy';
+import Order from '../containers/order';
+import User from '../containers/user';
 import {connect} from 'react-redux';
 
 class App extends Component{
@@ -30,7 +28,10 @@ class App extends Component{
     let Routes = (
       <Switch>
         <Route path='/' exact component={Home}/>
-        <Route path='/detail/:params'  component={Detail}/>
+        <Route path='/detail/:id'  component={Detail}/>
+        <Route path='/buy/:id'  component={Buy}/>
+        <Route path='/order'  component={Order}/>
+        <Route path='/user'  component={User}/>
       </Switch>
     );
     return (

@@ -1,6 +1,14 @@
 module.exports = [
     {
         id: Date.now(),
+        img: 'https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png',
+        title: '汉堡大王1',
+        count: 3,
+        price: '17',
+        commentState: 0
+    },
+    {
+        id: Date.now(),
         img: 'http://images2015.cnblogs.com/blog/138012/201610/138012-20161016201638030-473660627.png',
         title: '汉堡大王',
         count: 3,

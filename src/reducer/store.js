@@ -13,10 +13,10 @@ export default function store(state=initialState,action) {
             return state;
 
         case 'STORE_REMOVE':
-            return state.filter(item=>{
-                if(item.id!==action.data.id)
-                    return item;
-            });
+            // return state.filter(item=>{
+            //     if(item.id!==action.data.id)
+            //         return item;
+            // });
 
         default:
             return state;

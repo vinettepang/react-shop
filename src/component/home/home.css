@@ -13,13 +13,20 @@
   font-size: 14px;
   padding: 30px 0 18px 0;
 }
-.cat-list{
-	height: 50px;
-}
-.cat-list .cat-item{
-	width: 50px;
-	padding: 10px
-}
+
+
 a.list-item{
 	display: block;
+}
+.category-list .cat-list{
+  flex-wrap: wrap;
+  height: 220px;
+ align-items: flex-start;
+  justify-content: space-between;
+}
+.category-list .cat-list .cat-item{
+  width: calc((100%/5) - 10px);
+}
+.category-list .cat-item img{
+  max-width: 100%;
 }

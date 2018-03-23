@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, WhiteSpace, WingBlank,Flex } from 'antd-mobile';
+import { Carousel, WingBlank,Flex } from 'antd-mobile';
 import '../home.css'
 
 const PlaceHolder = ({ className = '', ...restProps }) => (
@@ -14,16 +14,17 @@ export default class Coupon extends React.Component{
   }
   componentDidMount() {
     // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-      });
-    }, 100);
+     let myFetchOptions = {method: 'GET'};
+    fetch('http://localhost:3001/api/category' , myFetchOptions)
+            .then(response => response.json())
+            .then(json => this.setState({
+        data: json,
+      }));
   }
   render() {
     return (
       <WingBlank>
-        <div className="sub-title">Normal</div>
+        <div className="sub-title"></div>
         <Carousel
           autoplay={false}
           infinite
@@ -33,10 +34,6 @@ export default class Coupon extends React.Component{
         >
           {this.state.data.map(val => (
              <Flex justify="center" className="cat-list"  key={val}>
-		      <PlaceHolder className="inline cat-item" />
-		      <PlaceHolder className="inline cat-item" />
-		      <PlaceHolder className="inline cat-item" />
-		      <PlaceHolder className="inline cat-item" />
 		      <PlaceHolder className="inline cat-item" />
 		    </Flex>
           ))}

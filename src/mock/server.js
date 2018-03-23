@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const KoaBody=require('koa-body');
+const cors = require('koa2-cors');
 const app = new Koa();
 const router = new Router();
 const koaBody=new KoaBody();
@@ -11,6 +12,20 @@ const homeAdData = require('./home/ad.js');
 // 首页 —— 推荐列表（猜你喜欢）
 const homeListData = require('./home/list.js');
 
+// 具体参数我们在后面进行解释
+app.use(cors({
+    origin: function (ctx) {
+        if (ctx.url === '/test') {
+            return "*"; // 允许来自所有域名请求
+        }
+        return 'http://localhost:8888'; // 这样就能只允许 http://localhost:8080 这个域名的请求了
+    },
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+    maxAge: 5,
+    credentials: true,
+    allowMethods: ['GET', 'POST', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}))
 
 router.get('/api/homead', async (ctx) => {
     console.log(ctx)
@@ -57,7 +72,6 @@ router.get('/api/detail/info/:id', async (ctx) => {
     const paramsId = params.id;
 
     console.log('当前商家id：' + paramsId);
-
 
     ctx.body = infoData;
 });
@@ -143,8 +157,23 @@ router.get('/api/store/addStore/:item',async (ctx) =>  {
     }
 );
 
+//首页 ---  分类
+const categoryListData=require('./home/category');
 
+router.get('/api/category', async (ctx) => {
+    // 参数
+    const params = ctx.params;
+    ctx.body = categoryListData;
+});
 
+//详情页 ---  食物分类
+const detailListData=require('./detail/detail-cat');
+
+router.get('/api/detail/detailfoods/:id', async (ctx) => {
+    // 参数
+    const params = ctx.params;
+    ctx.body = detailListData;
+});
 
 
 /*
@@ -158,4 +187,4 @@ router.post('/api/post',koaBody,async (ctx) => {
 
 // 开始服务并生成路由
 app.use(router.routes(), router.allowedMethods());
-app.listen(3200);
+app.listen(8008);
