@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './footer.css'
 export default class Footer extends React.Component{
 	constructor(){
 		super()
@@ -20,6 +20,7 @@ export default class Footer extends React.Component{
 	componentWillMount(){
 		console.log(this.props.allPirce)
 		console.log(this.props.data)
+		console.log(this.props.num)
 	}
 	_transitionEndCover(){
 		if(!this.state.showList){
@@ -32,7 +33,12 @@ export default class Footer extends React.Component{
 			<footer className='shop_footer' >
 				<div className="shop_footer_nav">
 					<span className={`${this.props.num===0?'isNumNone':''} shopping_footer`} data-quantity={this.props.num} onClick={this.handleClick.bind(this)}></span>
-				
+					<div className='shopping_footer_middle'>
+						<p className='shop_price'>
+							<span>¥{this.props.allPirce}</span>
+						</p>
+						<p className='kd_price'>{this.props.data.piecewise_agent_fee.tips}</p>
+					</div>
 					<a href="javascript:void(0)" className={`shoping_submit 
 						${this.props.allPirce>=this.props.data.float_minimum_order_amount
 						?'':'isdisable'}`}>
