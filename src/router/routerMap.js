@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 
-import Home from '../containers/home';
-import Detail from '../containers/detail';
+import Home from '../containers/home/home';
+import Detail from '../containers/detail/detail';
 import Buy from '../containers/buy';
 import Order from '../containers/order';
 import User from '../containers/user';

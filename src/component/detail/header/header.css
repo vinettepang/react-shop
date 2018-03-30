@@ -1,0 +1,73 @@
+.detail_top{
+	display: flex;
+	justify-content: space-between;
+}
+.detail_top_logo{
+	width: 100%;
+	max-width: 100px;
+	margin-right: 20px;
+}
+.detail_top_logo img{
+	width: 100%;
+}
+.detail_top_info{
+	flex:1;
+}
+
+.shoplist_header_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #3190e8;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.activity_cover{
+	position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    z-index: 100;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+.activity_cover_content{
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: .8rem solid transparent;
+    border-top-width: 1.066667rem;
+    border-bottom-width: 2.4rem;
+    overflow: auto;
+    background-color: #262626;
+    color: #fff;
+    -webkit-backdrop-filter: saturate(500%) blur(0.666667rem);
+    backdrop-filter: saturate(500%) blur(0.666667rem);
+}
+.activity_cover_close{
+	position: absolute;
+	bottom:20%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	    bottom: .666667rem;
+    margin: auto;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1PX solid #888;
+    border-radius: 50%;
+}
+.activity_cover_close svg{
+	    fill: #fff;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: scale(0.3);
+    -ms-transform: scale(0.3);
+    transform: scale(0.3);
+}

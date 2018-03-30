@@ -1,0 +1,50 @@
+.space-carousel {
+  padding: 16px;
+  background: #DEF1E5;
+  overflow: hidden;
+}
+.my-carousel .v-item {
+  height: 36px;
+  line-height: 36px;
+  padding-left: 10px;
+}
+.sub-title {
+  color: #888;
+  font-size: 14px;
+  padding: 30px 0 18px 0;
+}
+
+
+a.list-item{
+	display: block;
+}
+.category-list .cat-list{
+  flex-wrap: wrap;
+  height: 220px;
+ align-items: flex-start;
+  justify-content: space-between;
+}
+.category-list .cat-list .cat-item{
+  width: calc((100%/5) - 10px);
+}
+.category-list .cat-item img{
+  max-width: 100%;
+}
+.good_item{
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;;
+  color: #666;
+}
+
+.hot_list{
+  display: flex;
+  height: 30px;
+  line-height: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hot_list .hot_item{
+    flex-grow: 1
+}

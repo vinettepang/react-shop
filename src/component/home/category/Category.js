@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Carousel, WingBlank,Flex } from 'antd-mobile';
-import '../home.css'
 
 const PlaceHolder = ({ className = '', ...restProps }) => (
   
@@ -42,7 +41,7 @@ export default class Category extends React.Component{
     for( var i=0, len=carouselData.length; i<len; i+=this.state.groupNum ){
       groupData.push(carouselData.slice(i,i+this.state.groupNum))
     }
-    console.log(groupData)
+    //console.log(groupData)
     this.setState({
         group: groupData
     })
@@ -64,14 +63,11 @@ export default class Category extends React.Component{
            return (
              <Flex justify="center" className="cat-list"  key={index}>
               {items.map((item,i)=>{
-                console.log(item)
-            console.log(item.image_hash)
             let imgValue=item.image_hash.split('');
             imgValue.splice(3,0,'/');
             imgValue.splice(1,0,'/');
             imgValue=imgValue.join('');
                 return(
-               
                 <PlaceHolder className="inline cat-item" itemtitle={item.name} itemimg={imgValue}  key={i}/>
               )}
               )}

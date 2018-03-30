@@ -1,6 +1,5 @@
 import React from 'react';
 import { Carousel, WingBlank,Flex } from 'antd-mobile';
-import '../home.css'
 
 const PlaceHolder = ({ className = '', ...restProps }) => (
   <div className={`${className} placeholder`} {...restProps}>Block</div>
