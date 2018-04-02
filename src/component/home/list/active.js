@@ -26,8 +26,8 @@ export default class Active extends React.Component {
     }
   }
 
-  handleClick(e){
-    e.stopPropagation();
+  handleClick(event){
+   event.stopPropagation();
     this.setState({
       hide:!this.state.hide
     })

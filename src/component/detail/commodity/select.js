@@ -15,7 +15,6 @@ export default class Select extends React.Component{
 				index:this.props.quantity
 			})
 		}
-		console.log(this.props.quantity)
 	}
 	componentWillReceiveProps(nextProps){
 		if(  typeof nextProps.quantity==='number' ){

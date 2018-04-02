@@ -332,14 +332,104 @@ export default class CommodityItem extends React.Component{
 			}
 		})
 	}
-	handleFooterAdd(){
-
+	
+	handleFooterAdd(index,lieBid){
+		console.log(index,lieBid)
+		let thisFoods=this.state.foodsSave;
+		let num=0;
+		let allPirce=0;
+		thisFoods[this.state.id].entities[index].quantity++;
+		/*计算选中商品总个数和总价*/
+		thisFoods[this.state.id].entities.forEach((value,index)=>{
+			num=num+value.quantity;
+			allPirce=allPirce+(value.quantity*value.price)
+		})
+		let categoryObj={};
+		categoryObj[lieBid]={
+			id:lieBid,
+			num:this.state.fatherCate[lieBid].num+1
+		}
+		this.setState({
+			allPirce:allPirce,
+			num:num,
+			foodsSave:thisFoods,
+			/*类别数量控制*/
+			fatherCate:{
+				...this.state.fatherCate,
+				...categoryObj
+			}
+		})
+		console.log(thisFoods)
+		this._saveLocalStorage(thisFoods);
 	}
-	handleFooterReduce(){
-		
+	handleFooterReduce(index,lieBid){
+		console.log(index,lieBid)
+		let thisFoods=this.state.foodsSave;
+		let thisFoodsArr=[];
+		let num=0;
+		let allPirce=0;
+		/*当前类别计数*/
+		if(thisFoods[this.state.id].entities[index].quantity-1===0){
+			thisFoodsArr=[
+				...thisFoods[this.state.id].entities.slice(0,index),
+				...thisFoods[this.state.id].entities.slice(index+1)
+			]
+			thisFoods[this.state.id].entities=thisFoodsArr;
+		}else{
+			thisFoods[this.state.id].entities[index].quantity--;
+		}
+		/*计算选中商品总个数和总价*/
+		thisFoods[this.state.id].entities.forEach((value,index)=>{
+			num=num+value.quantity;
+			allPirce=allPirce+(value.quantity*value.price)
+		})
+		let categoryObj={};
+		categoryObj[lieBid]={
+			id:lieBid,
+			num:this.state.fatherCate[lieBid].num-1
+		}
+		this.setState({
+			allPirce:allPirce,
+			num:num,
+			/*所有购物车的商品集合*/
+			foodsSave:thisFoods,
+			/*按类别的id、num对的集合*/
+			fatherCate:{
+				...this.state.fatherCate,
+				...categoryObj
+			}
+		})
+		this._saveLocalStorage(thisFoods);
 	}
+	/*清空购物车*/
 	emptyAllFoods(){
-
+		let thisShopping={};
+		/*清空主内容和购物车*/
+		thisShopping[this.state.id]=[{entities:[]}];
+		/*清空类别，左侧aside*/
+		let fatherCate={...this.state.fatherCate}
+		/*fatherCate[value].num=0;循环里不这么做的原因是在category组件里我设置了传进去的值变化才更新，这里是对象，所以要新建一个对象*/
+		for(let  value in fatherCate){
+			fatherCate[value]={
+				...fatherCate[value],
+				num:0
+			}
+		}
+		this.setState({
+			allPirce:0,
+			num:0,
+			foodsSave:{
+				...this.state.foodsSave,
+				...thisShopping
+			},
+			/*类别*/
+			fatherCate:fatherCate
+		})
+		/*存商家的购物车信息*/
+		this._saveLocalStorage({
+				...this.state.foodsSave,
+				...thisShopping
+		});
 	}
 	_filter(para,arr){
 		return arr.filter((item,index)=>{
@@ -428,7 +518,7 @@ export default class CommodityItem extends React.Component{
 						</div>
 					</div>
 					<Footer
-					allPirce={this.state.allPirce} 
+					allPrice={this.state.allPrice} 
 					num={this.state.num} 
 					mainFoods={isSave?isSave[id].entities:[]} 
 					data={this.props.basicData}

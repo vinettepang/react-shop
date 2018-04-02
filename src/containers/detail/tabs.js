@@ -6,7 +6,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import Commodity from '../../component/detail/tabs/Commodity';
 import TabsNav from '../../component/detail/tabs/TabsNav';
 
-import Evaluate from './evaluate';
+import EvaluateSmart from './evaluate';
 import ShopInfo from './shopInfo';
 function renderTabBar(props) {
   return (<Sticky>
@@ -53,8 +53,8 @@ export default class DetailTabs extends React.Component{
         current:index
       })
     }
-    componentWillMount(){
-     // console.log(this.props.data)
+    componentDidMount(){
+      console.log(this.props)
     }
     render(){
         const tabs = [
@@ -64,9 +64,9 @@ export default class DetailTabs extends React.Component{
         ];
         return(
           <TabsNav data={this.props.data} tabs={tabs}>
-            <Commodity key={0} data={this.props.data}/>
-            <Evaluate key={1} data={this.props.data}/>
-            <ShopInfo key={2} data={this.props.data}/>
+            <Commodity key={0} data={this.props.data} basicData={this.props.data} id={this.props.id}/>
+            <EvaluateSmart key={1} id={this.props.id}/>
+            <ShopInfo key={2} id={this.props.id}/>
           </TabsNav>
         );
     }

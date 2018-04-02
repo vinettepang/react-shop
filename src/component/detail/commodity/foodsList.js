@@ -46,7 +46,9 @@ export default class FoodsList extends React.Component{
 						<span>{this.props.item.specfoods[0].price}</span>
 					</strong>
 				</div>
-				<Select quantity={this.props.alreadyNum} handleReduceFood={this.props.handleReduceFood} handleReduceAdd={this.props.handleReduceAdd}/>
+				<Select quantity={this.props.alreadyNum} 
+				handleReduceFood={this.props.handleReduceFood} 
+				handleReduceAdd={this.props.handleReduceAdd}/>
 				
 			</div>
 		)

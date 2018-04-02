@@ -34,6 +34,10 @@ export default class Header extends React.Component{
           activity:!this.state.activity
         })
     }
+    goback(){
+      console.log(window.history)
+      window.history.go(-1)
+    }
     render(){
 
         const data = this.state.data
@@ -43,12 +47,13 @@ export default class Header extends React.Component{
               <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={() => console.log('onLeftClick')}
+                onLeftClick={() => this.goback()}
                 rightContent={[
                  
                 ]}
               >
               </NavBar>
+
               <div className="detail_top"> 
                 <div className="detail_top_logo">
                   <img src={`//fuss10.elemecdn.com/${this.state.image_path?this.state.image_path:''}?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/`} alt=""/>

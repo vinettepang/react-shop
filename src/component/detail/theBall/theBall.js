@@ -19,9 +19,9 @@ export const  TheBall={
 		sonDiv.style.transform = `translate3d(-${left-10}px,0,0)`;
 		setTimeout(()=>{
 			document.body.removeChild(div);
-			document.querySelector('.shoplist_footer').classList.add("animation");
+			document.querySelector('.shopping_footer').classList.add("animation");
 			setTimeout(()=>{
-				document.querySelector('.shoplist_footer').classList.remove("animation");
+				document.querySelector('.shopping_footer').classList.remove("animation");
 			},400)
 		},620)
 	}
