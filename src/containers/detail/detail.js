@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from '../../component/detail/header/Header';
 import Info from '../../component/detail/info/info';
-import Footer from '../../component/detail/footer/Footer';
-
 import DetailTabs from './tabs';
 // import Comment from '../../component/detail/comment/comment';
 import './detail.css'
@@ -33,7 +31,6 @@ export default class Detail extends React.Component{
                 <div className="scrollMain">
                     <Header data={this.state.data}/>
                     <DetailTabs id={this.props.match.params.id} data={this.state.data}/>
-                    <Footer data={this.state.data}/>
                 </div>
             }
             </div>

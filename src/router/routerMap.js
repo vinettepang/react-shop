@@ -8,6 +8,9 @@ import Order from '../containers/order';
 import User from '../containers/user';
 import {connect} from 'react-redux';
 
+import Footer from '../component/common/footer/Footer';
+import Login from '../component/user/login';
+import Message from '../containers/message';
 class App extends Component{
   constructor(props, context){
     super(props, context);
@@ -26,13 +29,18 @@ class App extends Component{
   render(){
     //路由的声明.
     let Routes = (
-      <Switch>
+      <div>
         <Route path='/' exact component={Home}/>
-        <Route path='/detail/:id'  component={Detail}/>
         <Route path='/buy/:id'  component={Buy}/>
         <Route path='/order'  component={Order}/>
         <Route path='/user'  component={User}/>
+      <Switch>
+        <Route path='/detail/:id'  component={Detail}/>
+        <Route path='/login'  component={Login}/>
+        <Route path='/message'  component={Message}/>
+        <Footer/>
       </Switch>
+      </div>
     );
     return (
       <Router>

@@ -12,7 +12,7 @@ export default class Order extends React.Component{
 	}
 	componentDidMount() {
 	    let myFetchOptions = {method: 'GET'};
-	    fetch('http://localhost:3001/api/orderlist/123', myFetchOptions)
+	    fetch('http://localhost:8888/api/orderlist/123', myFetchOptions)
 	            .then(response => response.json())
 	            .then(json => {
 	            	this.setState({

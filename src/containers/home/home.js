@@ -11,8 +11,22 @@ import Coupon from '../../component/home/coupon/Coupon';
 import Footer from '../../component/common/footer/Footer';
 import ScrollTop from '../../component/common/scrollTop/scrollTop';
 
+import { login } from '../../reducer/dataState.js'
 import './home.css'
 class Home extends Component{
+    /*保存登录状态*/
+    componentWillMount(){
+        let localstate=this._getLocal('islogin');
+        if(localstate){
+            this.props.onLogin(localstate)
+            console.log(localstate)
+        }
+        console.log(this.props.data2)
+    }
+    _getLocal(name){
+        return JSON.parse(localStorage.getItem(name))
+    }
+        
     render(){
         return(
             <div>
@@ -23,7 +37,6 @@ class Home extends Component{
                 <Coupon/>
                 <GoodsList/>
                 <ScrollTop/>
-                <Footer/>
             </div>
         );
     }
@@ -32,12 +45,15 @@ class Home extends Component{
 const mapStateToProps =(state)=>{
     console.log(state)
     return{
-        userinfo: state.userinfo
+        data:state.loginPart,
+        data2:state
     }
 }
 const mapDispatchToProps=(dispatch)=>{
     return{
-       
+        onLogin:(data)=>{
+            dispatch(login(data))
+        }
     }
 }
 // function mapStateToProps(state) {
